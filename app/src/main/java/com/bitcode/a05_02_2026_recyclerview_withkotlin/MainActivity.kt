@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userAdapter: UserAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var users: ArrayList<User>
+    private lateinit var products : ArrayList<Product>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     fun initViews() {
         recyclerViewForUsers = findViewById(R.id.recyclerViewForUsers)
-        userAdapter = UserAdapter(users)
+        userAdapter = UserAdapter(users,products)
         recyclerViewForUsers.adapter = userAdapter
 
         linearLayoutManager = LinearLayoutManager(
@@ -45,6 +46,13 @@ class MainActivity : AppCompatActivity() {
                     "Pune"
                 )
             )
+        }
+
+        products = ArrayList<Product>()
+        for (i in 1..11) {
+            products.add(Product(i + 340,
+                "Product " + i,
+                i * 100 + 23.12 ))
         }
     }
 }
